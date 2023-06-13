@@ -53,9 +53,40 @@ else{
  
   }
   d_pop(){
-    
-  }
+    if(this.head==this.tail){
+     var node=this.head
+      this.head=null
+      this.tail=null
+    }else{
+     var node=this.head
+      while(node.next){
+         if(node.next==this.tail){
+            var prv=node
+         }
+       node=node.next
+      }
+      prv.next=null
+      this.tail=prv
+     }
+     return node.value
+    }
+  
   delete(value){
+    let node=this.head
+    if(value==this.tail.value){
+      x.d_pop()
+    }else{
+      while(node.next){
+        if(node.next.value==value){
+          var prv=node
+          var deleted=node.next
+          prv.next=deleted.next
+       }
+        node=node.next
+      }
+    }
+    
+    
 
   }
 }
@@ -68,6 +99,7 @@ x.insert("marwa")
 // ------(newvalue,     bvalue)
 x.insert("afteryasser","yasser")
 x.insert("afterymarwa","marwa")
-x.insert("maiar")
+x.delete("afterymarwa")
+// x.insert("maiar")
+// console.log(x.d_pop()) 
 x.display()
-console.log(x.search("kk"))
